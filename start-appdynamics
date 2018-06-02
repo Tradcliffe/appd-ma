@@ -11,9 +11,13 @@ MA_PROPERTIES+=" -Dappdynamics.controller.port=${APPDYNAMICS_CONTROLLER_PORT}"
 MA_PROPERTIES+=" -Dappdynamics.agent.accountName=${APPDYNAMICS_AGENT_ACCOUNT_NAME}" 
 MA_PROPERTIES+=" -Dappdynamics.agent.accountAccessKey=${APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY}" 
 MA_PROPERTIES+=" -Dappdynamics.controller.ssl.enabled=${APPDYNAMICS_CONTROLLER_SSL_ENABLED}"
+MA_PROPERTIES+=" -Dappdynamics.agent.applicationName=${APPDYNAMICS_AGENT_APPLICATION_NAME}"
 
 # Enable SIM and Docker Monitoring
 MA_PROPERTIES+=" -Dappdynamics.sim.enabled=true -Dappdynamics.docker.enabled=true"
+
+#Enable using container ID as host ID when the pod has more than one containers
+MA_PROPERTIES+=" -Dappdynamics.docker.container.containerIdAsHostId.enabled=true"
 
 # Start Machine Agent
 ${MACHINE_AGENT_HOME}/jre/bin/java ${MA_PROPERTIES} -jar ${MACHINE_AGENT_HOME}/machineagent.jar
